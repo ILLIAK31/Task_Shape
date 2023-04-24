@@ -42,3 +42,37 @@ Shape::~Shape()
 		delete tab[j];
 	delete tab;
 }
+
+void Shape::PrintForest(vector<vector<string>>& Shape, int& Size_Forest, vector<Shape*> objs)
+{
+	int index;
+	for (int i = 0; i < Size_Forest; ++i)
+	{
+		for (int j = 0; j < 2 * Size_Forest; ++j)
+		{
+			if (Shape[i][j] == "0")
+				cout << ' ';
+			else if ((Shape[i][j]).size() == 1)
+			{
+				index = stoi(Shape[i][j]);
+				//cout << "\033[1;" << wektor[index - 1]->color << wektor[index - 1]->symbol << "\033[0m";
+			}
+			else
+			{
+				index = int((Shape[i][j])[2]);
+				//cout << "\033[1;" << wektor[index - 1]->color << wektor[index - 1]->symbol << "\033[0m";
+			}
+		}
+		cout << endl;
+	}
+}
+
+string Shape::GetColor(Shape* obj)
+{
+	return obj->color;
+}
+
+char Shape::GetSymbol(Shape* obj)
+{
+	return obj->symbol;
+}

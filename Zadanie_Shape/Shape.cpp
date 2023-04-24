@@ -37,11 +37,37 @@ Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int
 			tab[j][i] = s;
 }
 
-Shape::~Shape()
+Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int Width, int X, int Y)
 {
+	++Size_Of_Obj;
+	if (Color == "Red")
+		color = "31m";
+	else if (Color == "Blue")
+		color = "34m";
+	else if (Color == "Green")
+		color = "32m";
+	else if (Color == "Yellow")
+		color = "33m";
+	else if (Color == "Purple")
+		color = "35m";
+	else if (Color == "White")
+		color = "37m";
+	symbol = Symbol;
+	height = Height;
+	width = Width;
+	x = X;
+	y = Y;
+	string s = to_string(Size_Of_Obj);
+	tab = new string * [height];
 	for (int j = 0; j < height; j++)
-		delete tab[j];
-	delete tab;
+	{
+		tab[j] = new string[width];
+		for (int i = 0; i < width; i++)
+			tab[j][i] = "0";
+	}
+	for (int j = 0; j < height; j++)
+		for (int i = 0; i < width; i++)
+			tab[j][i] = s;
 }
 
 string Shape::GetColor()
@@ -52,4 +78,11 @@ string Shape::GetColor()
 char Shape::GetSymbol()
 {
 	return this->symbol;
+}
+
+Shape::~Shape()
+{
+	for (int j = 0; j < height; j++)
+		delete tab[j];
+	delete tab;
 }

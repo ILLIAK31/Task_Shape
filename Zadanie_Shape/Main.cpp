@@ -6,6 +6,7 @@ using namespace std;
 
 #include "Shape.hpp"
 #include "Tree.hpp"
+#include "Rectangle.hpp"
 
 vector<Shape*> objs;
 
@@ -47,7 +48,7 @@ int main()
 	}
 	do
 	{
-		cout << endl << "Menu :" << endl << "1. Add tree to forest" << endl << "///2. Add rectangle to forest" << endl << "3. Print forest" << endl << "4. Exit" << endl << "Enter number : ";
+		cout << endl << "Menu :" << endl << "1. Add tree to forest" << endl << "2. Add rectangle to forest" << endl << "3. Print forest" << endl << "4. Exit" << endl << "Enter number : ";
 		cin >> menu_num;
 		if (menu_num == 1)
 		{
@@ -74,6 +75,33 @@ int main()
 			Tree* obj2 = new Tree();
 			objs.push_back(obj);
 			obj2->AddTree(obj,forest,size_forest);
+		}
+		else if (menu_num == 2)
+		{
+			cout << endl << "Enter color (Red , Blue , Green , Yellow , Purple , White) : ";
+			cin >> Color;
+			if ((Color != "Red") && (Color != "Blue") && (Color != "Green") && (Color != "Yellow") && (Color != "Purple") && (Color != "White"))
+			{
+				cout << endl << "Wrong color" << endl;
+				break;
+			}
+			cout << "Enter symbol : ";
+			cin >> Symbol;
+			cout << "Enter height : ";
+			cin >> Height;
+			cout << "Enter width : ";
+			cin >> Width;
+			cout << "Enter X ( From " << "1 to " << 2 * size_forest << " ) : ";
+			cin >> X;
+			if (size_forest == 1)
+				cout << "Enter Y (Only 1 can be Y) : ";
+			else
+				cout << "Enter Y ( From " << "1 to " << size_forest << " ) : ";
+			cin >> Y;
+			Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, Width, X, Y);
+			Rectangle* obj3 = new Rectangle();
+			objs.push_back(obj);
+			obj3->AddRectangle(obj, forest, size_forest);
 		}
 		else if (menu_num == 3)
 		{

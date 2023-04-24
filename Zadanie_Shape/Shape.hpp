@@ -4,8 +4,9 @@ class Shape
 {
 private:
 	friend class Tree;
+	friend class Rectangle;
 	friend void AddTree(Tree* obj2, Shape* obj, vector<vector<string>>& Shape);
-	friend string GetColor(Shape* obj);
+	//friend string GetColor(Shape* obj);
 	string color;
 	char symbol;
 	int height ,width;
@@ -16,6 +17,7 @@ private:
 public:
 	Shape() = default;
 	Shape(int& Size_Of_Obj,string Color, char Symbol, int Height, int X, int Y);
+	Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int Width , int X, int Y);
 	string GetColor();
 	char GetSymbol();
 	~Shape();

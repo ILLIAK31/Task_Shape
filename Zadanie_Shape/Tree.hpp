@@ -6,6 +6,6 @@ class Tree : public Shape
 {
 public:
 	Tree() = default;
-	void AddTree(Tree* obj2,Shape* obj, vector<vector<string>>& Shape, int& Size_Forest);
+	void AddTree(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest);
 	~Tree();
 };

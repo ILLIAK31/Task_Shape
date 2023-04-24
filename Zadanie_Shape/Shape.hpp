@@ -10,14 +10,13 @@ private:
 	char symbol;
 	int height ,width;
 	int x , y;
-	int** tab;
+	string** tab;
 	string position;
 	int size_of_forest;
 public:
 	Shape() = default;
-	Shape(int& Size_Forest,string Color, char Symbol, int Height, int X, int Y);
-	void PrintForest(vector<vector<string>>& Shape, int& Size_Forest);
-	string GetColor(Shape* obj);
-	char GetSymbol(Shape* obj);
+	Shape(int& Size_Of_Obj,string Color, char Symbol, int Height, int X, int Y);
+	string GetColor();
+	char GetSymbol();
 	~Shape();
 };

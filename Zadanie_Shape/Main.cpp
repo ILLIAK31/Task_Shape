@@ -1,15 +1,37 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 #include "Shape.hpp"
 #include "Tree.hpp"
 
+vector<Shape*> objs;
+
+void PrintForest(vector<Shape*>& objs,vector<vector<string>>& Shape, int& Size_Forest)
+{
+	int index;
+	for (int i = 0; i < Size_Forest; ++i)
+	{
+		for (int j = 0; j < 2 * Size_Forest; ++j)
+		{
+			if (Shape[i][j] == "0")
+				cout << ' ';
+			else
+			{
+				index = stoi(Shape[i][j]);
+				cout << "\033[1;" << objs[index - 1]->GetColor() << objs[index - 1]->GetSymbol() << "\033[0m";
+			}
+		}
+		cout << endl;
+	}
+}
+
 int main()
 {
 	vector<Shape*> objs;
-    int Height, Width, menu_num, X, Y, size_forest;
+    int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0;
 	string Color;
 	char Symbol;
 	cout << "To create forest give size of it (Size must be bigger than 0): ";
@@ -48,15 +70,14 @@ int main()
 			else
 				cout << "Enter Y ( From " << "1 to " << size_forest << " ) : ";
 			cin >> Y;
-			Shape* obj = new Shape(size_forest,Color,Symbol,Height,X,Y);
+			Shape* obj = new Shape(size_of_obj,Color,Symbol,Height,X,Y);
 			Tree* obj2 = new Tree();
 			objs.push_back(obj);
-			obj2->AddTree(obj2, obj,forest,size_forest);
+			obj2->AddTree(obj,forest,size_forest);
 		}
 		else if (menu_num == 3)
 		{
-			Shape* obj = new Shape();
-			obj->PrintForest(forest,size_forest);
+			PrintForest(objs,forest,size_forest);
 		}
 		else if (menu_num == 4)
 		{

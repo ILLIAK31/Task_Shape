@@ -5,9 +5,9 @@ using namespace std;
 
 #include "Shape.hpp"
 
-Shape::Shape(int& Size_Forest, string Color, char Symbol, int Height, int X, int Y)
+Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int Y)
 {
-	++Size_Forest;
+	++Size_Of_Obj;
 	if (Color == "Red")
 		color = "31m";
 	else if (Color == "Blue")
@@ -24,16 +24,17 @@ Shape::Shape(int& Size_Forest, string Color, char Symbol, int Height, int X, int
 	height = Height;
 	x = X;
 	y = Y;
-	tab = new int* [height];
+	string s = to_string(Size_Of_Obj);
+	tab = new string* [height];
 	for (int j = 0; j < height; j++)
 	{
-		tab[j] = new int[2 * height - 1];
+		tab[j] = new string[2 * height - 1];
 		for (int i = 0; i < 2 * height - 1; i++)
-			tab[j][i] = 0;
+			tab[j][i] = "0";
 	}
 	for (int j = 0; j < height; j++)
 		for (int i = height - j - 1; i < height + j; i++)
-			tab[j][i] = Size_Forest;
+			tab[j][i] = s;
 }
 
 Shape::~Shape()
@@ -43,36 +44,12 @@ Shape::~Shape()
 	delete tab;
 }
 
-void Shape::PrintForest(vector<vector<string>>& Shape, int& Size_Forest)
+string Shape::GetColor()
 {
-	int index;
-	for (int i = 0; i < Size_Forest; ++i)
-	{
-		for (int j = 0; j < 2 * Size_Forest; ++j)
-		{
-			if (Shape[i][j] == "0")
-				cout << ' ';
-			else if ((Shape[i][j]).size() == 1)
-			{
-				index = stoi(Shape[i][j]);
-				//cout << "\033[1;" << wektor[index - 1]->color << wektor[index - 1]->symbol << "\033[0m";
-			}
-			else
-			{
-				index = int((Shape[i][j])[2]);
-				//cout << "\033[1;" << wektor[index - 1]->color << wektor[index - 1]->symbol << "\033[0m";
-			}
-		}
-		cout << endl;
-	}
+	return this->color;
 }
 
-string Shape::GetColor(Shape* obj)
+char Shape::GetSymbol()
 {
-	return obj->color;
-}
-
-char Shape::GetSymbol(Shape* obj)
-{
-	return obj->symbol;
+	return this->symbol;
 }

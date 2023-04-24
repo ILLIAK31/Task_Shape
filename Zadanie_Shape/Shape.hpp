@@ -16,7 +16,7 @@ private:
 public:
 	Shape() = default;
 	Shape(int& Size_Forest,string Color, char Symbol, int Height, int X, int Y);
-	void PrintForest(vector<vector<string>>& Shape, int& Size_Forest, vector<Shape*> objs);
+	void PrintForest(vector<vector<string>>& Shape, int& Size_Forest);
 	string GetColor(Shape* obj);
 	char GetSymbol(Shape* obj);
 	~Shape();

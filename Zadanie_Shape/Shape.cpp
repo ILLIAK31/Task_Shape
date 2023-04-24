@@ -43,7 +43,7 @@ Shape::~Shape()
 	delete tab;
 }
 
-void Shape::PrintForest(vector<vector<string>>& Shape, int& Size_Forest, vector<Shape*> objs)
+void Shape::PrintForest(vector<vector<string>>& Shape, int& Size_Forest)
 {
 	int index;
 	for (int i = 0; i < Size_Forest; ++i)

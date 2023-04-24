@@ -56,7 +56,7 @@ int main()
 		else if (menu_num == 3)
 		{
 			Shape* obj = new Shape();
-			obj->PrintForest(forest,size_forest,objs);
+			obj->PrintForest(forest,size_forest);
 		}
 		else if (menu_num == 4)
 		{

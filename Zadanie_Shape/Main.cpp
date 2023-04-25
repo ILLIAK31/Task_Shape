@@ -11,24 +11,8 @@ using namespace std;
 
 vector<Shape*> objs;
 
-void PrintForest(vector<Shape*>& objs,vector<vector<string>>& Shape, int& Size_Forest)
-{
-	int index;
-	for (int i = 0; i < Size_Forest; ++i)
-	{
-		for (int j = 0; j < 2 * Size_Forest; ++j)
-		{
-			if (Shape[i][j] == "0")
-				cout << ' ';
-			else
-			{
-				index = stoi(Shape[i][j]);
-				cout << "\033[1;" << objs[index - 1]->GetColor() << objs[index - 1]->GetSymbol() << "\033[0m";
-			}
-		}
-		cout << endl;
-	}
-}
+void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest);
+void DeleteObjs(vector<Shape*>& objs);
 
 int main()
 {
@@ -145,4 +129,37 @@ int main()
 			break;
 		}
 	} while (true);
+	//DeleteObjs(objs);
+	forest.clear();
+	cout << endl << "Forest was deleted" << endl;
+}
+
+void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest)
+{
+	int index;
+	for (int i = 0; i < Size_Forest; ++i)
+	{
+		for (int j = 0; j < 2 * Size_Forest; ++j)
+		{
+			if (Shape[i][j] == "0")
+				cout << ' ';
+			else
+			{
+				index = stoi(Shape[i][j]);
+				cout << "\033[1;" << objs[index - 1]->GetColor() << objs[index - 1]->GetSymbol() << "\033[0m";
+			}
+		}
+		cout << endl;
+	}
+}
+
+void DeleteObjs(vector<Shape*>& objs)
+{
+	for (auto& obj : objs)
+	{
+		delete obj;
+		obj = NULL;
+	}
+	objs.clear();
+	cout << "Objects were deleted" << endl;
 }

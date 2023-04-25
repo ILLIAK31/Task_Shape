@@ -22,5 +22,5 @@ public:
 	Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int Y,string Position);
 	string GetColor();
 	char GetSymbol();
-	~Shape();
+	virtual ~Shape();
 };

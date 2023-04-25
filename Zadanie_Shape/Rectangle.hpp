@@ -6,5 +6,5 @@ class Rectangle : public Shape
 {
 public:
 	Rectangle() = default;
-	void AddRectangle(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest);
+	virtual void AddRectangle(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest);
 };

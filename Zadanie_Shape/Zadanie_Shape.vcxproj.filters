@@ -30,6 +30,9 @@
     <ClCompile Include="RT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Border.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shape.hpp">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RT.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Border.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

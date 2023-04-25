@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Border.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RT.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Border.hpp" />
     <ClInclude Include="Rectangle.hpp" />
     <ClInclude Include="RT.hpp" />
     <ClInclude Include="Shape.hpp" />

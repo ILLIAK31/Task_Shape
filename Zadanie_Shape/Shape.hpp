@@ -6,6 +6,7 @@ private:
 	friend class Tree;
 	friend class Rectangle;
 	friend class RT;
+	friend class Border;
 	//friend void AddTree(Tree* obj2, Shape* obj, vector<vector<string>>& Shape);
 	//friend string GetColor(Shape* obj);
 	string color;

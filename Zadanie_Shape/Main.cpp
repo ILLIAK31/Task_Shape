@@ -8,7 +8,7 @@ using namespace std;
 #include "Tree.hpp"
 #include "Rectangle.hpp"
 #include "RT.hpp"
-
+#include "Border.hpp"
 
 vector<Shape*> objs;
 
@@ -17,9 +17,8 @@ void DeleteObjs(vector<Shape*>& objs);
 
 int main()
 {
-	vector<Shape*> objs;
-    int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0;
-	string Color , Position;
+    int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0 , xb , yb;
+	string Color , Position , border;
 	char Symbol;
 	cout << "To create forest give size of it (Size must be bigger than 0): ";
 	cin >> size_forest;
@@ -84,10 +83,21 @@ int main()
 			else
 				cout << "Enter Y ( From " << "1 to " << size_forest << " ) : ";
 			cin >> Y;
+			cout << "Do you want border for rectangle ?" << endl << "Yes or No : ";
+			cin >> border;
 			Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, Width, X, Y);
 			Rectangle* obj3 = new Rectangle();
 			objs.push_back(obj);
 			obj3->AddRectangle(obj, forest, size_forest);
+			if (border == "Yes")
+			{
+				cout << "Enter x for border : ";
+				cin >> xb;
+				cout << "Enter y for border : ";
+				cin >> yb;
+				Border* obj5 = new Border();
+				obj5->AddRectangle(obj, forest, size_forest);
+			}
 		}
 		else if (menu_num == 3)
 		{
@@ -156,15 +166,11 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 
 void DeleteObjs(vector<Shape*>& objs)
 {
-	cout << objs.size() << endl;
-	delete objs[0];
-	objs.erase(objs.begin());
-	/*for (auto& obj : objs)
+	for (auto& obj : objs)
 	{
 		delete obj;
 		obj = NULL;
-	}*/
-	cout << objs.size();
+	}
 	objs.clear();
 	cout << "Objects were deleted" << endl;
 }

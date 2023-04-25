@@ -10,13 +10,14 @@ using namespace std;
 #include "RT.hpp"
 #include "Border.hpp"
 
-vector<Shape*> objs;
+//vector<Shape*> objs;
 
-void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest);
+void PrintForest(vector<Shape*> objs, vector<vector<string>>& Shape, int& Size_Forest);
 void DeleteObjs(vector<Shape*>& objs);
 
 int main()
 {
+	vector<Shape*> objs;
     int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0 , xb , yb;
 	string Color , Position , border;
 	char Symbol;
@@ -60,6 +61,8 @@ int main()
 			Tree* obj2 = new Tree();
 			objs.push_back(obj);
 			obj2->AddTree(obj,forest,size_forest);
+			delete obj2;
+			obj2 = NULL;
 		}
 		else if (menu_num == 2)
 		{
@@ -97,7 +100,11 @@ int main()
 				cin >> yb;
 				Border* obj5 = new Border();
 				obj5->AddRectangle(obj, forest, size_forest);
+				delete obj5;
+				obj5 = NULL;
 			}
+			delete obj3;
+			obj3 = NULL;
 		}
 		else if (menu_num == 3)
 		{
@@ -125,6 +132,8 @@ int main()
 			RT* obj4 = new RT();
 			objs.push_back(obj);
 			obj4->AddRT(obj,forest,size_forest);
+			delete obj4;
+			obj4 = NULL;
 		}
 		else if (menu_num == 4)
 		{
@@ -145,7 +154,7 @@ int main()
 	cout << endl << "Forest was deleted" << endl;
 }
 
-void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest)
+void PrintForest(vector<Shape*> objs, vector<vector<string>>& Shape, int& Size_Forest)
 {
 	int index;
 	for (int i = 0; i < Size_Forest; ++i)
@@ -157,7 +166,7 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 			else
 			{
 				index = stoi(Shape[i][j]);
-				cout << "\033[1;" << objs[index - 1]->GetColor() << objs[index - 1]->GetSymbol() << "\033[0m";
+				cout << "\033[1;" << objs[index - 1]->GetColor(objs[index-1]) << objs[index - 1]->GetSymbol(objs[index-1]) << "\033[0m";
 			}
 		}
 		cout << endl;
@@ -166,7 +175,7 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 
 void DeleteObjs(vector<Shape*>& objs)
 {
-	for (auto& obj : objs)
+	for (auto obj : objs)
 	{
 		delete obj;
 		obj = NULL;

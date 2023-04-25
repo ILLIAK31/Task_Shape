@@ -138,14 +138,14 @@ Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int
 	}
 }
 
-string Shape::GetColor()
+string Shape::GetColor(Shape* obj)
 {
-	return this->color;
+	return obj->color;
 }
 
-char Shape::GetSymbol()
+char Shape::GetSymbol(Shape* obj)
 {
-	return this->symbol;
+	return obj->symbol;
 }
 
 Shape::~Shape()

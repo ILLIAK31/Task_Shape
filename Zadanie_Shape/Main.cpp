@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <string>
 
@@ -8,6 +8,7 @@ using namespace std;
 #include "Tree.hpp"
 #include "Rectangle.hpp"
 #include "RT.hpp"
+
 
 vector<Shape*> objs;
 
@@ -155,11 +156,15 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 
 void DeleteObjs(vector<Shape*>& objs)
 {
-	for (auto& obj : objs)
+	cout << objs.size() << endl;
+	delete objs[0];
+	objs.erase(objs.begin());
+	/*for (auto& obj : objs)
 	{
 		delete obj;
 		obj = NULL;
-	}
+	}*/
+	cout << objs.size();
 	objs.clear();
 	cout << "Objects were deleted" << endl;
 }

@@ -127,6 +127,9 @@ int main()
 			cout << "Enter postition of object (LT,RT,LD,RD) . Where L is left , R is right , T is top , D is down . \nEnter : ";
 			cin >> Position;
 			Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, X, Y ,Position);
+			RT* obj4 = new RT();
+			objs.push_back(obj);
+			obj4->AddRT(obj,forest,size_forest);
 		}
 		else if (menu_num == 4)
 		{

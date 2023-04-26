@@ -12,14 +12,14 @@ using namespace std;
 
 //vector<Shape*> objs;
 
-void PrintForest(vector<Shape*> objs, vector<vector<string>>& Shape, int& Size_Forest);
+void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest);
 void DeleteObjs(vector<Shape*>& objs);
 
 int main()
 {
 	vector<Shape*> objs;
-    int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0 , xb , yb;
-	string Color , Position , border;
+    int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0 , xb , yb , h ,w;
+	string Color , ColorB , Position , border;
 	char Symbol;
 	cout << "To create forest give size of it (Size must be bigger than 0): ";
 	cin >> size_forest;
@@ -98,7 +98,14 @@ int main()
 				cin >> xb;
 				cout << "Enter y for border : ";
 				cin >> yb;
-				Border* obj5 = new Border();
+				cout << "Enter hight og border : ";
+				cin >> h;
+				cout << "Enter width of border : ";
+				cin >> w;
+				cout << "Enter color of border : ";
+				cin >> ColorB;
+				Border* obj5 = new Border(ColorB,xb,yb,h,w);
+				objs.push_back(obj5);
 				obj5->AddRectangle(obj, forest, size_forest);
 				delete obj5;
 				obj5 = NULL;
@@ -107,7 +114,7 @@ int main()
 			obj3 = NULL;
 		}
 		else if (menu_num == 3)
-		{
+	{
 			cout << endl << "Enter color (Red , Blue , Green , Yellow , Purple , White) : ";
 			cin >> Color;
 			if ((Color != "Red") && (Color != "Blue") && (Color != "Green") && (Color != "Yellow") && (Color != "Purple") && (Color != "White"))
@@ -154,7 +161,7 @@ int main()
 	cout << endl << "Forest was deleted" << endl;
 }
 
-void PrintForest(vector<Shape*> objs, vector<vector<string>>& Shape, int& Size_Forest)
+void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest)
 {
 	int index;
 	for (int i = 0; i < Size_Forest; ++i)
@@ -166,12 +173,13 @@ void PrintForest(vector<Shape*> objs, vector<vector<string>>& Shape, int& Size_F
 			else
 			{
 				index = stoi(Shape[i][j]);
-				cout << "\033[1;" << objs[index - 1]->GetColor(objs[index-1]) << objs[index - 1]->GetSymbol(objs[index-1]) << "\033[0m";
+				cout << "\033[1;" << objs[index - 1]->GetColor() << objs[index - 1]->GetSymbol() << "\033[0m";
 			}
 		}
 		cout << endl;
 	}
 }
+
 
 void DeleteObjs(vector<Shape*>& objs)
 {

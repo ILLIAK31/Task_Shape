@@ -11,17 +11,14 @@ using namespace std;
 #include "Border.hpp"
 
 void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest);
-//
-void DeleteObjs(vector<Shape*>& objs);
-//
 
 int main()
 {
-	vector<Shape*> objs;
     int Height, Width, menu_num, X, Y, size_forest , size_of_obj = 0 , xb , yb , h ,w;
 	string Color , ColorB , Position , border;
 	char Symbol;
 	cout << "To create forest give size of it (Size must be bigger than 0): ";
+	vector<Shape*> objs;
 	cin >> size_forest;
 	cout << "Size of forest gona be " << size_forest << "x" << 2 * size_forest << endl;
 	vector<vector<string> > forest(size_forest, vector<string>(2 * size_forest));
@@ -38,7 +35,6 @@ int main()
 		cin >> menu_num;
 		if (menu_num == 1)
 		{
-
 			cout << endl << "Enter color (Red , Blue , Green , Yellow , Purple , White) : ";
 			cin >> Color;
 			if ((Color != "Red") && (Color != "Blue") && (Color != "Green") && (Color != "Yellow") && (Color != "Purple") && (Color != "White"))
@@ -126,7 +122,7 @@ int main()
 			}
 		}
 		else if (menu_num == 3)
-	{
+		{
 			cout << endl << "Enter color (Red , Blue , Green , Yellow , Purple , White) : ";
 			cin >> Color;
 			if ((Color != "Red") && (Color != "Blue") && (Color != "Green") && (Color != "Yellow") && (Color != "Purple") && (Color != "White"))
@@ -155,22 +151,18 @@ int main()
 			obj4 = NULL;
 		}
 		else if (menu_num == 4)
-		{
 			PrintForest(objs,forest,size_forest);
-		}
 		else if (menu_num == 5)
 		{
+			cout << "Objects were deleted" << endl;
 			break;
 		}
 		else
 		{
-			cout << "Wrong number" << endl;
+			cout << "Wrong number" << endl << "Objects were deleted" << endl;
 			break;
 		}
 	} while (true);
-	//
-	//DeleteObjs(objs);
-	//
 	forest.clear();
 	cout << endl << "Forest was deleted" << endl;
 }
@@ -193,16 +185,3 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 		cout << endl;
 	}
 }
-
-//
-void DeleteObjs(vector<Shape*>& objs)
-{
-	for (auto obj : objs)
-	{
-		delete obj;
-		obj = NULL;
-	}
-	objs.clear();
-	cout << "Objects were deleted" << endl;
-}
-//

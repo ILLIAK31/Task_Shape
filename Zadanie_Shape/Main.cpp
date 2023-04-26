@@ -114,16 +114,6 @@ int main()
 				obj5 = NULL;
 				delete obj3;
 				obj3 = NULL;
-				//
-				for (int j = 0; j < size_forest; ++j)
-				{
-					for (int i = 0; i < 2 * size_forest; ++i)
-					{
-						cout << forest[j][i];
-					}
-					cout << endl;
-				}
-				//
 			}
 			else
 			{

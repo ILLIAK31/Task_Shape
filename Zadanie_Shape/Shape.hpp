@@ -7,12 +7,10 @@ private:
 	friend class Rectangle;
 	friend class RT;
 	friend class Border;
-	//friend void AddTree(Tree* obj2, Shape* obj, vector<vector<string>>& Shape);
-	//friend string GetColor(Shape* obj);
-	string color;
+	string color ;
 	char symbol;
-	int height ,width;
-	int x , y;
+	int height ,width ;
+	int x , y ;
 	string** tab;
 	string position;
 	int size_of_forest;
@@ -21,6 +19,7 @@ public:
 	Shape(int& Size_Of_Obj,string Color, char Symbol, int Height, int X, int Y);
 	Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int Width , int X, int Y);
 	Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int Y,string Position);
+	Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int Width ,int X, int Y,int Type);
 	virtual string GetColor();
 	virtual char GetSymbol();
 	virtual ~Shape();

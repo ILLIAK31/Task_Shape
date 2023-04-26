@@ -138,6 +138,46 @@ Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int X, int
 	}
 }
 
+Shape::Shape(int& Size_Of_Obj, string Color, char Symbol, int Height, int Width, int X, int Y, int Type) :symbol(Symbol), height(Height), width(Width), x(X), y(Y)
+{
+	++Size_Of_Obj;
+	if (Color == "Red")
+		color = "31m";
+	else if (Color == "Blue")
+		color = "34m";
+	else if (Color == "Green")
+		color = "32m";
+	else if (Color == "Yellow")
+		color = "33m";
+	else if (Color == "Purple")
+		color = "35m";
+	else if (Color == "White")
+		color = "37m";
+
+	string s = to_string(Size_Of_Obj);
+	int index_x = 0, index_y = 0;
+	tab = new string * [Height+2];
+	for (int j = 0; j < Height+2; j++)
+	{
+		tab[j] = new string[Width+2];
+		for (int i = 0; i < Width + 2; i++)
+		{
+			if ((index_y == 0) || (index_y == (Height + 1)))
+				tab[j][i] = s;
+			else
+			{
+				if ((index_x == 0) || (index_x == (Width + 1)))
+					tab[j][i] = s;
+				else
+					tab[j][i] = "0";
+			}
+			++index_x;
+		}
+		++index_y;
+		index_x = 0;
+	}
+}
+
 string Shape::GetColor()
 {
 	return this->color;

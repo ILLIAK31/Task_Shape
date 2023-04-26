@@ -10,10 +10,10 @@ using namespace std;
 #include "RT.hpp"
 #include "Border.hpp"
 
-//vector<Shape*> objs;
-
 void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_Forest);
+//
 void DeleteObjs(vector<Shape*>& objs);
+//
 
 int main()
 {
@@ -88,30 +88,52 @@ int main()
 			cin >> Y;
 			cout << "Do you want border for rectangle ?" << endl << "Yes or No : ";
 			cin >> border;
-			Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, Width, X, Y);
-			Rectangle* obj3 = new Rectangle();
-			objs.push_back(obj);
-			obj3->AddRectangle(obj, forest, size_forest);
 			if (border == "Yes")
 			{
+				Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, Width, X, Y);
+				Rectangle* obj3 = new Rectangle();
+				objs.push_back(obj);
+				obj3->AddRectangle(obj, forest, size_forest);
 				cout << "Enter x for border : ";
 				cin >> xb;
 				cout << "Enter y for border : ";
 				cin >> yb;
-				cout << "Enter hight og border : ";
+				cout << "Enter hight of border : ";
 				cin >> h;
 				cout << "Enter width of border : ";
 				cin >> w;
-				cout << "Enter color of border : ";
+				cout << "Enter color of border (Red , Blue , Green , Yellow , Purple , White) : ";
 				cin >> ColorB;
-				Border* obj5 = new Border(ColorB,xb,yb,h,w);
-				objs.push_back(obj5);
-				obj5->AddRectangle2(obj, forest, size_forest,size_of_obj);
+				if (!(((h + yb + 2) < Height) && ((w + xb + 2) < Width)))
+					break;
+				Shape* obj6 = new Shape(size_of_obj, ColorB, Symbol, h, w, xb , yb,2);
+				Border* obj5 = new Border();
+				objs.push_back(obj6);
+				obj5->AddRectangle2(obj,obj6, forest, size_forest);
 				delete obj5;
 				obj5 = NULL;
+				delete obj3;
+				obj3 = NULL;
+				//
+				for (int j = 0; j < size_forest; ++j)
+				{
+					for (int i = 0; i < 2 * size_forest; ++i)
+					{
+						cout << forest[j][i];
+					}
+					cout << endl;
+				}
+				//
 			}
-			delete obj3;
-			obj3 = NULL;
+			else
+			{
+				Shape* obj = new Shape(size_of_obj, Color, Symbol, Height, Width, X, Y);
+				Rectangle* obj3 = new Rectangle();
+				objs.push_back(obj);
+				obj3->AddRectangle(obj, forest, size_forest);
+				delete obj3;
+				obj3 = NULL;
+			}
 		}
 		else if (menu_num == 3)
 	{
@@ -156,7 +178,9 @@ int main()
 			break;
 		}
 	} while (true);
+	//
 	//DeleteObjs(objs);
+	//
 	forest.clear();
 	cout << endl << "Forest was deleted" << endl;
 }
@@ -180,7 +204,7 @@ void PrintForest(vector<Shape*>& objs, vector<vector<string>>& Shape, int& Size_
 	}
 }
 
-
+//
 void DeleteObjs(vector<Shape*>& objs)
 {
 	for (auto obj : objs)
@@ -191,3 +215,4 @@ void DeleteObjs(vector<Shape*>& objs)
 	objs.clear();
 	cout << "Objects were deleted" << endl;
 }
+//

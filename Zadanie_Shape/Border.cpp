@@ -21,10 +21,9 @@ Border::Border(string Color, int X, int Y, int H, int W) : x(X), y(Y), h(H), w(W
 		color = "37m";
 }
 
-void Border::AddRectangle(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest)
+void Border::AddRectangle2(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest, int& Size_Of_Obj)
 {
 	int X = (obj->x) - 1, Y = (obj->y) - 1;
-
 
 	//if((x<(obj->width-2))||(y<(obj->height)||())
 

@@ -106,7 +106,7 @@ int main()
 				cin >> ColorB;
 				Border* obj5 = new Border(ColorB,xb,yb,h,w);
 				objs.push_back(obj5);
-				obj5->AddRectangle(obj, forest, size_forest);
+				obj5->AddRectangle2(obj, forest, size_forest,size_of_obj);
 				delete obj5;
 				obj5 = NULL;
 			}

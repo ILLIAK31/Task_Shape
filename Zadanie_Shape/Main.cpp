@@ -163,6 +163,7 @@ int main()
 			break;
 		}
 	} while (true);
+	objs.clear();
 	forest.clear();
 	cout << endl << "Forest was deleted" << endl;
 }

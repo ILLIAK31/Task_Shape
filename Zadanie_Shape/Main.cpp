@@ -57,6 +57,8 @@ int main()
 			Tree* obj2 = new Tree();
 			objs.push_back(obj);
 			obj2->AddTree(obj,forest,size_forest);
+			delete obj2;
+			obj2 = NULL;
 		}
 		else if (menu_num == 2)
 		{
@@ -157,7 +159,7 @@ int main()
 		}
 		else
 		{
-			cout << "Wrong number" << endl << "Objects were deleted" << endl;
+			cout << "Wrong number" << endl << endl << "Objects were deleted" << endl;
 			break;
 		}
 	} while (true);

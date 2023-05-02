@@ -26,3 +26,5 @@ void Tree::AddTree(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest)
 			break;
 	}
 }
+
+Tree::~Tree(){}

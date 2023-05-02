@@ -191,6 +191,9 @@ char Shape::GetSymbol()
 Shape::~Shape()
 {
 	for (int j = 0; j < height; j++)
-		delete tab[j];
-	delete [] tab;
+	{
+		delete[] tab[j];
+		tab[j] = NULL;
+	}
+	delete[] tab;
 }

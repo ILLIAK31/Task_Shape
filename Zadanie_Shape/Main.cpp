@@ -57,8 +57,6 @@ int main()
 			Tree* obj2 = new Tree();
 			objs.push_back(obj);
 			obj2->AddTree(obj,forest,size_forest);
-			delete obj2;
-			obj2 = NULL;
 		}
 		else if (menu_num == 2)
 		{
@@ -163,6 +161,11 @@ int main()
 			break;
 		}
 	} while (true);
+	for (auto& x : objs)
+	{
+		delete x;
+		x = NULL;
+	}
 	objs.clear();
 	forest.clear();
 	cout << endl << "Forest was deleted" << endl;

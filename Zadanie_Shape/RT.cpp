@@ -27,3 +27,7 @@ void RT::AddRT(Shape* obj, vector<vector<string>>& Shape, int& Size_Forest)
 			break;
 	}
 }
+
+RT::~RT()
+{
+}

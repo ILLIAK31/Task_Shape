@@ -26,3 +26,7 @@ void Rectangle::AddRectangle(Shape* obj, vector<vector<string>>& Shape, int& Siz
 			break;
 	}
 }
+
+Rectangle::~Rectangle()
+{
+}

@@ -31,6 +31,10 @@ void Border::AddRectangle2(Shape* obj2 , Shape* obj, vector<vector<string>>& Sha
 	}
 }
 
+Border::~Border()
+{
+}
+
 string Border::GetColor()
 {
 	return this->color;
